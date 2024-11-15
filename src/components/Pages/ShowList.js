@@ -15,7 +15,6 @@ export default function ShowList() {
   });
   const [actionType, setActionType] = useState("add");
 
-  // 데이터 가져오기
   const getData = async () => {
     try {
       const response = await fetch(
@@ -32,7 +31,6 @@ export default function ShowList() {
     getData();
   }, []);
 
-  // 모달 열기
   const openModal = (type, data = {}) => {
     setActionType(type);
     setModalData({
@@ -46,12 +44,10 @@ export default function ShowList() {
     setShowModal(true);
   };
 
-  // 모달 닫기
   const closeModal = () => {
     setShowModal(false);
   };
 
-  // 데이터 추가
   const postData = async () => {
     try {
       await fetch("https://672819f2270bd0b975546091.mockapi.io/api/v1/Classes", {
@@ -68,7 +64,6 @@ export default function ShowList() {
     }
   };
 
-  // 데이터 수정
   const updateData = async () => {
     try {
       await fetch(
@@ -88,7 +83,6 @@ export default function ShowList() {
     }
   };
 
-  // 데이터 삭제
   const deleteData = async (id) => {
     try {
       await fetch(
@@ -103,7 +97,6 @@ export default function ShowList() {
     }
   };
 
-  // 모달 저장 버튼 클릭 시
   const handleSubmit = () => {
     if (actionType === "add") {
       postData();
@@ -112,7 +105,6 @@ export default function ShowList() {
     }
   };
 
-  // 모달 데이터 변경 시
   const handleChange = (e) => {
     const { name, value } = e.target;
     setModalData((prevData) => ({
@@ -161,7 +153,6 @@ export default function ShowList() {
         ))}
       </ListGroup>
 
-      {/* 모달 */}
       <Modal show={showModal} onHide={closeModal}>
         <Modal.Header closeButton>
           <Modal.Title>
